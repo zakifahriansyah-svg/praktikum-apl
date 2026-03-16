@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <cstdlib> 
-#include <iomanip> 
+#include <cstdlib>
+#include <iomanip>
 using namespace std;
 
 struct KandunganNutrisi {

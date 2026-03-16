@@ -129,12 +129,12 @@ void menuAdmin(DataGizi gizi[], int& jumlahData, string inputUsername) {
                 cetakTabelGizi(gizi, jumlahData, kategoriCari);
             }
         }
-        else if (menuPilihan == 2) tambahAtauRequestData(gizi, jumlahData, "Admin", true);
-        else if (menuPilihan == 3) ubahData(gizi, jumlahData);
-        else if (menuPilihan == 4) hapusData(gizi, jumlahData);
+        else if (menuPilihan == 2) { cetakTabelGizi(gizi, jumlahData); tambahAtauRequestData(gizi, jumlahData, "Admin", true); }
+        else if (menuPilihan == 3) { cetakTabelGizi(gizi, jumlahData); ubahData(gizi, jumlahData); }
+        else if (menuPilihan == 4) { cetakTabelGizi(gizi, jumlahData); hapusData(gizi, jumlahData); }
         else if (menuPilihan == 5) konfirmasiRequest(gizi, jumlahData);
         else if (menuPilihan != 0) cout << "Pilihan tidak valid!\n";
-        if (menuPilihan != 0) { cout << "\nTekan Enter..."; cin.get(); }
+        if (menuPilihan != 0) { cout << "\nTekan Enter Untuk Kembali..."; cin.get(); }
     } while (menuPilihan != 0);
 }
 
@@ -148,7 +148,7 @@ void menuUser(DataGizi gizi[], int& jumlahData, string inputUsername) {
         if (menuPilihan == 1)      cetakTabelGizi(gizi, jumlahData);
         else if (menuPilihan == 2) tambahAtauRequestData(gizi, jumlahData, inputUsername, false);
         else if (menuPilihan != 0) cout << "Pilihan tidak valid!\n";
-        if (menuPilihan != 0) { cout << "\nTekan Enter..."; cin.get(); }
+        if (menuPilihan != 0) { cout << "\nTekan Enter Untuk Kembali..."; cin.get(); }
     } while (menuPilihan != 0);
 }
 
@@ -165,7 +165,7 @@ void menuLogin(DataGizi gizi[], int& jumlahData, AkunUser users[], int jumlahUse
             if (users[i].username == inputUsername && users[i].password == inputPassword) { loginBerhasil = true; role = 2; break; }
         if (!loginBerhasil && ++percobaan == 3) { system("cls"); cout << "[!] Gagal 3 kali. Program dihentikan.\n"; exit(0); }
     }
-    cout << "\nSelamat datang, " << inputUsername << "!\nTekan Enter..."; cin.ignore(1000, '\n'); cin.get();
+    cout << "\nSelamat datang, " << inputUsername << "!\nTekan Enter Untuk Kembali..."; cin.ignore(1000, '\n'); cin.get();
     if (role == 1) menuAdmin(gizi, jumlahData, inputUsername);
     else           menuUser(gizi, jumlahData, inputUsername);
 }
@@ -185,7 +185,7 @@ void menuRegister(AkunUser users[], int& jumlahUser) {
         cout << "Password: "; cin >> users[jumlahUser].password;
         jumlahUser++; cout << "\nRegistrasi berhasil!\n";
     }
-    cout << "Tekan Enter..."; cin.ignore(1000, '\n'); cin.get();
+    cout << "Tekan Enter Untuk Kembali..."; cin.ignore(1000, '\n'); cin.get();
 }
 
 int main() {
@@ -210,7 +210,7 @@ int main() {
         if      (menuAwal == 1)  menuLogin(gizi, jumlahData, users, jumlahUser);
         else if (menuAwal == 2)  menuRegister(users, jumlahUser);
         else if (menuAwal == -1) {
-            cout << "\n[!] Pilihan tidak valid!\nTekan Enter...";
+            cout << "\n[!] Pilihan tidak valid!\nTekan Enter Untuk Kembali...";
             cin.ignore(1000, '\n'); cin.get();
         }
     } while (menuAwal != 0);
